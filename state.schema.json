@@ -1,0 +1,91 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"properties": {
+		"deviceId": {
+			"type": "string"
+		},
+		"timestamp": {
+			"type": "string",
+			"format": "date-time"
+		},
+		"sensors": {
+			"type": "object",
+			"properties": {
+				"temperature": {
+					"type": "number"
+				},
+				"water": {
+				    "enum": [
+				        "present",
+				        "absent"
+				    ]
+				}
+			},
+			"required": [
+				"temperature",
+				"water"
+			]
+		},
+		"modules": {
+			"type": "object",
+			"properties": {
+				"thermostat": {
+					"type": "object",
+					"properties": {
+						"targetTemperature": {
+							"type": "number"
+						}
+					},
+					"required": [
+						"targetTemperature"
+					]
+				},
+				"timer": {
+					"type": "object",
+					"properties": {
+						"duration": {
+							"type": "string",
+							"format": "duration"
+						},
+						"startTime": {
+							"type": "string",
+							"format": "date-time"
+						}
+					},
+					"required": [
+						"duration",
+						"startTime"
+					]
+				},
+				"safety": {
+					"type": "object",
+					"properties": {
+						"faults": {
+							"type": "array",
+							"items": [
+								{
+									"type": "string"
+								}
+							]
+						}
+					},
+					"required": [
+						"faults"
+					]
+				}
+			},
+			"required": [
+				"thermostat",
+				"timer",
+				"safety"
+			]
+		}
+	},
+	"required": [
+		"deviceId",
+		"timestamp",
+		"sensors",
+		"modules"
+	]
+}
