@@ -1,91 +1,120 @@
 {
-	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"type": "object",
-	"properties": {
-		"deviceId": {
-			"type": "string"
-		},
-		"timestamp": {
-			"type": "string",
-			"format": "date-time"
-		},
-		"sensors": {
-			"type": "object",
-			"properties": {
-				"temperature": {
-					"type": "number"
-				},
-				"water": {
-				    "enum": [
-				        "present",
-				        "absent"
-				    ]
-				}
-			},
-			"required": [
-				"temperature",
-				"water"
-			]
-		},
-		"modules": {
-			"type": "object",
-			"properties": {
-				"thermostat": {
-					"type": "object",
-					"properties": {
-						"targetTemperature": {
-							"type": "number"
-						}
-					},
-					"required": [
-						"targetTemperature"
-					]
-				},
-				"timer": {
-					"type": "object",
-					"properties": {
-						"duration": {
-							"type": "string",
-							"format": "duration"
-						},
-						"startTime": {
-							"type": "string",
-							"format": "date-time"
-						}
-					},
-					"required": [
-						"duration",
-						"startTime"
-					]
-				},
-				"safety": {
-					"type": "object",
-					"properties": {
-						"faults": {
-							"type": "array",
-							"items": [
-								{
-									"type": "string"
-								}
-							]
-						}
-					},
-					"required": [
-						"faults"
-					]
-				}
-			},
-			"required": [
-				"thermostat",
-				"timer",
-				"safety"
-			]
-		}
-	},
-	"required": [
-		"deviceId",
-		"timestamp",
-		"sensors",
-		"modules"
-	]
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+        "deviceId": {
+            "type": "string"
+        },
+        "timestamp": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "sensors": {
+            "type": "object",
+            "properties": {
+                "temperature": {
+                    "type": "number",
+                    "minimum":  0,
+                    "maimum": 100
+                },
+                "water": {
+                    "enum": [
+                        "present",
+                        "absent"
+                    ]
+                }
+            },
+            "required": [
+                "temperature",
+                "water"
+            ]
+        },
+        "modules": {
+            "type": "object",
+            "properties": {
+                "thermostat": {
+                    "type": "object",
+                    "properties": {
+                        "targetTemperature": {
+                            "type": "number"
+                        },
+                        "timerSetting": {
+                            "type": "integer",
+                            "minimun":0
+                        },
+                        "currentMode": {
+                            "type": {
+                                "enum": [
+                                    "Waiting",
+                                    "DelayedStart",
+                                    "Cooking",
+                                    "LowWater",
+                                    "OverTime",
+                                    "UIBusy",
+                                    "Error"
+                                ]
+                            }
+                        },
+                        "currentProgram": {
+                            "type": "integer",
+                            "minimum": 0
+                        }
+                    },
+                    "required": [
+                        "targetTemperature",
+                        "currentMode",
+                        "currentProgram"
+                    ]
+                },
+                "timer": {
+                    "type": "object",
+                    "properties": {
+                        "duration": {
+                            "type": "number",
+                            "minimum": 0
+                        },
+                        "leftTime": {
+                            "type": "number"
+                            
+                        },
+                        "isActive": {
+                            "type": "boolean"
+                        }
+                    },
+                    "required": [
+                        "duration",
+                        "leftTime",
+                        "isActive"
+                    ]
+                },
+                "safety": {
+                    "type": "object",
+                    "properties": {
+                        "faults": {
+                            "type": "array",
+                            "items": [
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    },
+                    "required": [
+                        "faults"
+                    ]
+                }
+            },
+            "required": [
+                "thermostat",
+                "timer",
+                "safety"
+            ]
+        }
+    },
+    "required": [
+        "deviceId",
+        "timestamp",
+        "sensors",
+        "modules"
+    ]
 }
