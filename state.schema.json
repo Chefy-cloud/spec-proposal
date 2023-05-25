@@ -9,61 +9,48 @@
             "type": "string",
             "format": "date-time"
         },
-        "sensors": {
+        "telemetry": {
+            "description": "The telemetry data from the InnoCook device",
             "type": "object",
             "properties": {
                 "temperature": {
+                    "description": "The water temperature in degrees Celsius",
                     "type": "number",
-                    "minimum":  0,
-                    "maimum": 100
+                    "minimum": -273.15
                 },
                 "water": {
                     "enum": [
                         "present",
                         "absent"
                     ]
+                },
+                "timeLeftSeconds": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "faults": {
+                    "type": "array",
+                    "items": [
+                        {
+                            "type": "string"
+                        }
+                    ]
                 }
-            },
-            "required": [
-                "temperature",
-                "water"
-            ]
+            }
         },
-        "modules": {
+        "settings": {
             "type": "object",
+            "description": "The settings for the InnoCook device",
             "properties": {
                 "thermostat": {
                     "type": "object",
                     "properties": {
                         "targetTemperature": {
                             "type": "number"
-                        },
-                        "timerSetting": {
-                            "type": "integer",
-                            "minimun":0
-                        },
-                        "currentMode": {
-                            "type": {
-                                "enum": [
-                                    "Waiting",
-                                    "DelayedStart",
-                                    "Cooking",
-                                    "LowWater",
-                                    "OverTime",
-                                    "UIBusy",
-                                    "Error"
-                                ]
-                            }
-                        },
-                        "currentProgram": {
-                            "type": "integer",
-                            "minimum": 0
                         }
                     },
                     "required": [
-                        "targetTemperature",
-                        "currentMode",
-                        "currentProgram"
+                        "targetTemperature"
                     ]
                 },
                 "timer": {
@@ -73,48 +60,26 @@
                             "type": "number",
                             "minimum": 0
                         },
-                        "leftTime": {
-                            "type": "number"
-                            
-                        },
                         "isActive": {
                             "type": "boolean"
                         }
                     },
                     "required": [
                         "duration",
-                        "leftTime",
                         "isActive"
-                    ]
-                },
-                "safety": {
-                    "type": "object",
-                    "properties": {
-                        "faults": {
-                            "type": "array",
-                            "items": [
-                                {
-                                    "type": "string"
-                                }
-                            ]
-                        }
-                    },
-                    "required": [
-                        "faults"
                     ]
                 }
             },
             "required": [
                 "thermostat",
-                "timer",
-                "safety"
+                "timer"
             ]
         }
     },
     "required": [
         "deviceId",
         "timestamp",
-        "sensors",
-        "modules"
+        "telemetry",
+        "settings"
     ]
 }
