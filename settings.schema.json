@@ -23,24 +23,26 @@
             ]
         },
         "timer": {
-            "type": "object",
-            "properties": {
-                "duration": {
-                    "description": "The duration of the timer in seconds",
-                    "type": "number",
-                    "minimum": 0,
-                    "maximum": 356400,
-                    "multipleOf": 60
+            "any": [
+                {
+                    "type": "object",
+                    "properties": {
+                        "duration": {
+                            "description": "The duration of the timer in seconds",
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 356400,
+                            "multipleOf": 60
+                        }
+                    },
+                    "required": ["duration"]
+                },
+                {
+                    "type": "string",
+                    "const": "disabled"
                 }
-            },
-            "required": [
-                "duration"
             ]
         }
     },
-    "required": [
-        "isEnabled",
-        "thermostat",
-        "timer"
-    ]
+    "required": ["isEnabled", "thermostat", "timer"]
 }
