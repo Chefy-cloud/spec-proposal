@@ -1,48 +1,46 @@
 {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "type": "object",
-    "description": "The settings for the InnoCook device",
-    "properties": {
-        "isEnabled": {
-            "description": "Whether the device is enabled",
-            "type": "boolean"
-        },
-        "thermostat": {
-            "type": "object",
-            "properties": {
-                "targetTemperature": {
-                    "description": "The target temperature in degrees Celsius",
-                    "type": "number",
-                    "minimum": 0,
-                    "maximum": 95,
-                    "multipleOf": 0.1
-                }
-            },
-            "required": [
-                "targetTemperature"
-            ]
-        },
-        "timer": {
-            "any": [
-                {
-                    "type": "object",
-                    "properties": {
-                        "duration": {
-                            "description": "The duration of the timer in seconds",
-                            "type": "number",
-                            "minimum": 0,
-                            "maximum": 356400,
-                            "multipleOf": 60
-                        }
-                    },
-                    "required": ["duration"]
-                },
-                {
-                    "type": "string",
-                    "const": "disabled"
-                }
-            ]
-        }
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "description": "The settings for the InnoCook device",
+  "properties": {
+    "isEnabled": {
+      "description": "Whether the device is enabled",
+      "type": "boolean"
     },
-    "required": ["isEnabled", "thermostat", "timer"]
+    "thermostat": {
+      "type": "object",
+      "properties": {
+        "targetTemperature": {
+          "description": "The target temperature in degrees Celsius",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 95,
+          "multipleOf": 0.1
+        }
+      },
+      "required": ["targetTemperature"]
+    },
+    "timer": {
+      "any": [
+        {
+          "type": "object",
+          "properties": {
+            "duration": {
+              "description": "The duration of the timer in seconds",
+              "type": "number",
+              "minimum": 0,
+              "maximum": 356400,
+              "multipleOf": 60
+            }
+          },
+          "required": ["duration"]
+        },
+        {
+          "type": "string",
+          "const": "disabled"
+        }
+      ]
+    }
+  },
+  "required": ["isEnabled", "thermostat", "timer"]
 }

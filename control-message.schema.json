@@ -1,22 +1,17 @@
 {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "type": "object",
-    "properties": {
-        "deviceId": {
-            "type": "string"
-        },
-        "timestamp": {
-            "type": "string",
-            "format": "date-time"
-        },
-        "settings": {
-            "$ref": "settings.schema.json"
-        }
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "deviceId": {
+      "type": "string"
     },
-    "required": [
-        "deviceId",
-        "timestamp",
-        "telemetry",
-        "settings"
-    ]
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "settings": {
+      "$ref": "settings.schema.json"
+    }
+  },
+  "required": ["deviceId", "timestamp", "telemetry", "settings"]
 }

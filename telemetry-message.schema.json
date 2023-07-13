@@ -1,51 +1,43 @@
 {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "type": "object",
-    "properties": {
-        "deviceId": {
-            "type": "string"
-        },
-        "timestamp": {
-            "type": "string",
-            "format": "date-time"
-        },
-        "telemetry": {
-            "description": "The telemetry data from the InnoCook device",
-            "type": "object",
-            "properties": {
-                "temperature": {
-                    "description": "The water temperature in degrees Celsius",
-                    "type": "number",
-                    "minimum": -273.15
-                },
-                "water": {
-                    "enum": [
-                        "present",
-                        "absent"
-                    ]
-                },
-                "timeLeftSeconds": {
-                    "type": "integer",
-                    "minimum": 0
-                },
-                "faults": {
-                    "type": "array",
-                    "items": [
-                        {
-                            "type": "string"
-                        }
-                    ]
-                }
-            }
-        },
-        "settings": {
-            "$ref": "settings.schema.json"
-        }
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "deviceId": {
+      "type": "string"
     },
-    "required": [
-        "deviceId",
-        "timestamp",
-        "telemetry",
-        "settings"
-    ]
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "telemetry": {
+      "description": "The telemetry data from the InnoCook device",
+      "type": "object",
+      "properties": {
+        "temperature": {
+          "description": "The water temperature in degrees Celsius",
+          "type": "number",
+          "minimum": -273.15
+        },
+        "water": {
+          "enum": ["present", "absent"]
+        },
+        "timeLeftSeconds": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "faults": {
+          "type": "array",
+          "items": [
+            {
+              "type": "string"
+            }
+          ]
+        }
+      }
+    },
+    "settings": {
+      "$ref": "settings.schema.json"
+    }
+  },
+  "required": ["deviceId", "timestamp", "telemetry", "settings"]
 }
