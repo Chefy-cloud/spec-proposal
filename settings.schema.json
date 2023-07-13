@@ -3,6 +3,10 @@
     "type": "object",
     "description": "The settings for the InnoCook device",
     "properties": {
+        "isEnabled": {
+            "description": "Whether the device is enabled",
+            "type": "boolean"
+        },
         "thermostat": {
             "type": "object",
             "properties": {
@@ -27,18 +31,15 @@
                     "minimum": 0,
                     "maximum": 356400,
                     "multipleOf": 60
-                },
-                "isActive": {
-                    "type": "boolean"
                 }
             },
             "required": [
-                "duration",
-                "isActive"
+                "duration"
             ]
         }
     },
     "required": [
+        "isEnabled",
         "thermostat",
         "timer"
     ]
