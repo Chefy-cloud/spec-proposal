@@ -10,48 +10,7 @@
             "format": "date-time"
         },
         "settings": {
-            "type": "object",
-            "description": "The settings for the InnoCook device",
-            "properties": {
-                "thermostat": {
-                    "type": "object",
-                    "properties": {
-                        "targetTemperature": {
-                            "description": "The target temperature in degrees Celsius",
-                            "type": "number",
-                            "minimum": 0,
-                            "maximum": 95,
-                            "multipleOf": 0.1
-                        }
-                    },
-                    "required": [
-                        "targetTemperature"
-                    ]
-                },
-                "timer": {
-                    "type": "object",
-                    "properties": {
-                        "duration": {
-                            "description": "The duration of the timer in seconds",
-                            "type": "number",
-                            "minimum": 0,
-                            "maximum": 356400,
-                            "multipleOf": 60
-                        },
-                        "isActive": {
-                            "type": "boolean"
-                        }
-                    },
-                    "required": [
-                        "duration",
-                        "isActive"
-                    ]
-                }
-            },
-            "required": [
-                "thermostat",
-                "timer"
-            ]
+            "$ref": "settings.schema.json"
         }
     },
     "required": [
