@@ -3,8 +3,8 @@
   "type": "object",
   "description": "The settings for the InnoCook device",
   "properties": {
-    "isEnabled": {
-      "description": "Whether the device is enabled",
+    "isCooking": {
+      "description": "Whether the device is cooking",
       "type": "boolean"
     },
     "thermostat": {
