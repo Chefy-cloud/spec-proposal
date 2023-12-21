@@ -18,8 +18,8 @@
           "type": "number",
           "minimum": -273.15
         },
-        "water": {
-          "enum": ["present", "absent"]
+        "waterPresent": {
+          "type": "boolean"
         },
         "timeLeftSeconds": {
           "type": "integer",
