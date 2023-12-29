@@ -42,5 +42,5 @@
       ]
     }
   },
-  "required": ["isEnabled", "thermostat", "timer"]
+  "required": ["isCooking", "thermostat", "timer"]
 }
