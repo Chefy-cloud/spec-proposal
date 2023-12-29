@@ -13,5 +13,5 @@
       "$ref": "settings.schema.json"
     }
   },
-  "required": ["deviceId", "timestamp", "telemetry", "settings"]
+  "required": ["deviceId", "timestamp", "settings"]
 }
